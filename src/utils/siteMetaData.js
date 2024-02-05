@@ -1,10 +1,10 @@
 const siteMetadata = {
-  title: 'Alight Motion MOD APK 2024 with Pro Features, No Watermark, and Ad-Free Experience!',
-  author: 'Alight Creative',
-  description: 'Alight Motion MOD APK 2024 with Pro Features, No Watermark, and Ad-Free Experience!',
+  title: 'Taha Render Forum',
+  author: 'Webkin Solutions',
+  description: 'Taha render Forum',
   language: 'en-us',
   theme: 'system',
-  siteUrl: 'https://alight-motion.vercel.app/', // your website URL
+  siteUrl: 'https://taha-renderforum.vercel.app/', // your website URL
   // siteUrl: "http://localhost:3000/",
   siteLogo: '/alightmotionlogo.webp',
   socialBanner: '/alightmotionlogo.webp',

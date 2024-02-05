@@ -176,7 +176,7 @@ const Butybar = ({ blogy }: { blogy: any }) => {
         <DropdownMenu>
           <DropdownMenuTrigger>
             <button className="w-10 h-10 p-2 flex text-white items-center justify-center transition-all duration-150 rounded-full">
-              <FaShareAlt />
+              <FaShareAlt className="text-white" />
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="ml-[150px] space-y-2 flex items-start flex-col text-xl font-semibold">
