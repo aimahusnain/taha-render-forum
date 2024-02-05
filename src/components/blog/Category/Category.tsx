@@ -21,7 +21,7 @@ const Category: React.FC<CategoryProps> = ({
     <Link
       href={link}
       className={cx(
-        "bg-zinc-400 !w-fit !inline-flex py-1.5 md:py-2 px-6 md:px-10 rounded-full hover:scale-105 transition-all capitalize ease duration-200",
+        "bg-zinc-200 !w-fit !inline-flex py-1.5 md:py-2 px-6 md:px-10 rounded-full hover:scale-105 transition-all capitalize ease duration-200",
         className,
         extraClassName,
         active ? "text-slate-900 border-neutral-800 border-2" : "text-slate-700"

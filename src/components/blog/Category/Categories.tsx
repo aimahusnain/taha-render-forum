@@ -41,8 +41,8 @@ const Categories: React.FC<CategoriesProps> = ({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className="!text-black" />
+      <CarouselNext className="!text-black" />
     </Carousel>
   );
 };

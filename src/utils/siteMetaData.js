@@ -5,7 +5,7 @@ const siteMetadata = {
   language: 'en-us',
   theme: 'system',
   siteUrl: 'https://taha-renderforum.vercel.app/', // your website URL
-  // siteUrl: "http://localhost:3000/", 
+  // siteUrl: "http://localhost:3000/",
   siteLogo: '/alightmotionlogo.webp',
   socialBanner: '/alightmotionlogo.webp',
   email: 'aimahusnain@gmail.com',
