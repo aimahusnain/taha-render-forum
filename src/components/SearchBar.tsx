@@ -1,6 +1,6 @@
 'use client'
 
-import { Prisma, Subreddit } from '@prisma/client'
+import { Post, Prisma, Subreddit } from '@prisma/client'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import debounce from 'lodash.debounce'
@@ -52,7 +52,6 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
     const { data } = await axios.get(`/api/search?q=${input}`);
     return data as (Subreddit | Post & {
       _count?: Prisma.SubredditCountOutputType;
-      // include any other related data you need
       author?: any;
       subreddit?: any;
       comments?: any;
