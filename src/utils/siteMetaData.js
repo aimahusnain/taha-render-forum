@@ -4,8 +4,8 @@ const siteMetadata = {
   description: 'Alight Motion MOD APK 2024 with Pro Features, No Watermark, and Ad-Free Experience!',
   language: 'en-us',
   theme: 'system',
-  // siteUrl: 'https://alight-motion.vercel.app/', // your website URL
-  siteUrl: "http://localhost:3000/",
+  siteUrl: 'https://alight-motion.vercel.app/', // your website URL
+  // siteUrl: "http://localhost:3000/",
   siteLogo: '/alightmotionlogo.webp',
   socialBanner: '/alightmotionlogo.webp',
   email: 'aimahusnain@gmail.com',

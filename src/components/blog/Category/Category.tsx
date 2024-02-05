@@ -1,4 +1,4 @@
-import {cx} from '@/src/utils'
+import { cx } from "@/src/utils";
 import Link from "next/link";
 import React from "react";
 
@@ -21,10 +21,10 @@ const Category: React.FC<CategoryProps> = ({
     <Link
       href={link}
       className={cx(
-        "bg-neutral-800 !w-fit !inline-flex py-1.5 md:py-2 px-6 md:px-10 rounded-full hover:scale-105 transition-all capitalize ease duration-200",
+        "bg-neutral-400 !w-fit !inline-flex py-1.5 md:py-2 px-6 md:px-10 rounded-full hover:scale-105 transition-all capitalize ease duration-200",
         className,
         extraClassName,
-        active ? "text-light border-neutral-400 border-2" : "text-light"
+        active ? "text-slate-900 border-neutral-800 border-2" : "text-slate-700"
       )}
     >
       {name}
