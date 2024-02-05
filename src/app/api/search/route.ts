@@ -1,12 +1,13 @@
-import { db } from '@/src/lib/db'
+import { db } from '@/src/lib/db';
+import { Subreddit, Post } from '@prisma/client';
 
 export async function GET(req: Request) {
-  const url = new URL(req.url)
-  const q = url.searchParams.get('q')
+  const url = new URL(req.url);
+  const q = url.searchParams.get("q");
 
-  if (!q) return new Response('Invalid query', { status: 400 })
+  if (!q) return new Response("Invalid query", { status: 400 });
 
-  const results = await db.subreddit.findMany({
+  const subredditResults = await db.subreddit.findMany({
     where: {
       name: {
         startsWith: q,
@@ -16,7 +17,24 @@ export async function GET(req: Request) {
       _count: true,
     },
     take: 5,
-  })
+  });
 
-  return new Response(JSON.stringify(results))
+  const postResults = await db.post.findMany({
+    where: {
+      title: {
+        contains: q,
+      },
+    },
+    include: {
+      // include any other related data you need
+      author: true,
+      subreddit: true,
+      comments: true,
+    },
+    take: 5, // adjust as needed
+  });
+
+  const results = [...subredditResults, ...postResults];
+
+  return new Response(JSON.stringify(results));
 }

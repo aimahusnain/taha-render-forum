@@ -41,22 +41,26 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const {
-    isFetching,
-    data: queryResults,
-    refetch,
-    isFetched,
-  } = useQuery({
-    queryFn: async () => {
-      if (!input) return []
-      const { data } = await axios.get(`/api/search?q=${input}`)
-      return data as (Subreddit & {
-        _count: Prisma.SubredditCountOutputType
-      })[]
-    },
-    queryKey: ['search-query'],
-    enabled: false,
-  })
+ const {
+  isFetching,
+  data: queryResults,
+  refetch,
+  isFetched,
+} = useQuery({
+  queryFn: async () => {
+    if (!input) return [];
+    const { data } = await axios.get(`/api/search?q=${input}`);
+    return data as (Subreddit | Post & {
+      _count?: Prisma.SubredditCountOutputType;
+      // include any other related data you need
+      author?: any;
+      subreddit?: any;
+      comments?: any;
+    })[];
+  },
+  queryKey: ['search-query'],
+  enabled: false,
+});
 
   useEffect(() => {
     setInput('')
@@ -65,33 +69,48 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
   return (
     <Command
       ref={commandRef}
-      className='relative rounded-lg border max-w-lg z-50 overflow-visible'>
+      className='relative rounded-lg border max-w-lg z-50 overflow-visible'
+    >
       <CommandInput
         isLoading={isFetching}
         onValueChange={(text) => {
-          setInput(text)
-          debounceRequest()
+          setInput(text);
+          debounceRequest();
         }}
         value={input}
         className='outline-none border-none focus:border-none focus:outline-none ring-0'
-        placeholder='Search communities...'
+        placeholder='Search Communities & Posts'
       />
 
       {input.length > 0 && (
         <CommandList className='absolute bg-white top-full inset-x-0 shadow rounded-b-md'>
           {isFetched && <CommandEmpty>No results found.</CommandEmpty>}
           {(queryResults?.length ?? 0) > 0 ? (
-            <CommandGroup heading='Communities'>
-              {queryResults?.map((subreddit) => (
+            <CommandGroup heading='Communities & Posts'>
+              {queryResults?.map((result) => (
                 <CommandItem
                   onSelect={(e) => {
-                    router.push(`/r/${e}`)
-                    router.refresh()
+                    if ('name' in result) {
+                      router.push(`/r/${e}`);
+                    } else if ('title' in result) {
+                      router.push(`/post/${result.id}`);
+                    }
+                    router.refresh();
                   }}
-                  key={subreddit.id}
-                  value={subreddit.name}>
-                  <Users className='mr-2 h-4 w-4' />
-                  <Link href={`/r/${subreddit.name}`}>r/{subreddit.name}</Link>
+                  key={result.id}
+                  value={'name' in result ? result.name : result.title}
+                >
+                  {'name' in result ? (
+                    <Users className='mr-2 h-4 w-4' />
+                  ) : (
+                    // Placeholder for the post icon
+                    <span className='mr-2 h-4 w-4'>📝</span>
+                  )}
+                  {'name' in result ? (
+                    <Link href={`/r/${result.name}`}>r/{result.name}</Link>
+                  ) : (
+                    <Link href={`/post/${result.id}`}>{result.title}</Link>
+                  )}
                 </CommandItem>
               ))}
             </CommandGroup>
