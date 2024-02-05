@@ -26,7 +26,7 @@ const Categories: React.FC<CategoriesProps> = ({
       opts={{
         align: "start",
       }}
-      className="max-w-full sm:mx-0 mx-10 md:mx-10"
+      className="max-w-full !text-black sm:mx-0 mx-10 md:mx-10"
     >
       <CarouselContent className="px-6">
         {categories.map((cat: any) => (
