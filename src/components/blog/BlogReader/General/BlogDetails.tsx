@@ -4,6 +4,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/src/components/ui/tooltip";
+import siteMetadata from "@/src/utils/siteMetaData";
 import { format, parseISO } from "date-fns";
 import { slug } from "github-slugger";
 import { BookOpen } from "lucide-react";
@@ -13,7 +14,7 @@ const BlogDetails = ({ blog, slug: blogSlug }: { blog: any; slug: any }) => {
   return (
     <div className="uppercase leading-4 tracking-[2px] font-bold text-slate-400 flex flex-wrap justify-center items-center gap-2">
       <Link
-        href={`/categories/${slug(blog.tags[0])}`}
+        href={`${siteMetadata.siteUrl}/blog/categories/${slug(blog.tags[0])}`}
         className="mx-3 hover:text-white"
       >
         #{blog.tags[0]}

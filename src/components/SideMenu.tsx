@@ -13,6 +13,7 @@ import { RiRobot2Line } from "react-icons/ri";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 import { IoBookOutline } from "react-icons/io5";
 import { Button } from "./ui/Button";
+import siteMetadata from "../utils/siteMetaData";
 
 const SideBar = () => {
   return (
@@ -95,7 +96,7 @@ const SideBar = () => {
 
                 <li>
                   <Link
-                    href="/blog/categories/all"
+                    href={`${siteMetadata.siteUrl}/blog/categories/all`}
                     className="flex text-slate-600 hover:text-zinc-900 gap-2 items-center"
                   >
                     <IoBookOutline className="w-5 h-5" />

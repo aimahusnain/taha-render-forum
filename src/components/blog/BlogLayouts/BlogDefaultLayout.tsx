@@ -19,16 +19,16 @@ const BlogDefaultLayout = ({ blog }: {blog: any}) => {
       </Link>
 
       <div className="flex flex-col w-full mt-4">
-        <span className="uppercase text-primary font-semibold text-xs sm:text-sm">
+        <span className="uppercase text-green-500 font-semibold text-xs sm:text-sm">
           {blog.tags[0]}
         </span>
-        <Link aria-label={blog.title} href={blog.url} className="inline-block my-1">
-          <h2 className="hover:text-primary hover:underline capitalize text-[24px] font-bold leading-relaxed mb-[0.5rem]">
+        <Link aria-label={blog.title} href={blog.url} className="text-zinc-900 inline-block my-1">
+          <h2 className="hover:text-green-600 hover:underline capitalize text-[24px] font-bold leading-relaxed mb-[0.5rem]">
               {blog.title}
           </h2>
         </Link>
 
-        <span className="capitalize text-gray dark:text-light/50 font-semibold text-[18px]">
+        <span className="capitalize text-slate-800 dark:text-light/50 font-semibold text-[18px]">
           {blog.description}
         </span>
       </div>

@@ -8,6 +8,7 @@ import {
 import { slug } from "github-slugger";
 import React from "react";
 import Category from "./Category";
+import siteMetadata from "@/src/utils/siteMetaData";
 
 interface CategoriesProps {
   categories: any;
@@ -32,7 +33,7 @@ const Categories: React.FC<CategoriesProps> = ({
           <CarouselItem key={cat} className="flex w-fit basis-auto">
             <Category
               key={cat}
-              link={`/categories/${cat}`}
+              link={`${siteMetadata.siteUrl}/blog/categories/${cat}`}
               name={cat}
               active={currentSlug === slug(cat)}
               extraClassName={extraClassnames[cat]}

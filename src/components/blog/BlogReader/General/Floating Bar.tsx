@@ -130,12 +130,12 @@ const Butybar = ({ blogy }: { blogy: any }) => {
       >
         <Dialog>
           <DialogTrigger>
-            <Button
-              className="capitalize text-white rounded-full bg-transparent focus:border focus:border-white"
+            <button
+              className="capitalize text-white rounded-full bg-transparent focus:border focus:border-black"
               aria-label="Table of Contents"
             >
               <FaBarsStaggered />
-            </Button>
+            </button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
@@ -147,7 +147,6 @@ const Butybar = ({ blogy }: { blogy: any }) => {
                 return (
                   <li key={`#${heading.slug}`} className="py-1">
                     <button
-                      // href={`#${heading.slug}`}
                       onClick={(e) => handleButtonClick(e, `${heading.slug}`)}
                       data-level={heading.level}
                       className="data-[level=two]:pl-0 data-[level=two]:pt-2 data-[level=two]:border-t border-solid border-zinc-500/10 data-[level=three]:pl-4 sm:data-[level=three]:pl-6 w-full hover:bg-alightdarkbg transition-all duration-400 rounded-lg p-3 flex items-center justify-start !text-left"
@@ -176,9 +175,9 @@ const Butybar = ({ blogy }: { blogy: any }) => {
 
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <Button className="w-10 h-10 p-2 flex items-center justify-center transition-all duration-150 rounded-full">
+            <button className="w-10 h-10 p-2 flex items-center justify-center transition-all duration-150 rounded-full">
               <FaShareAlt />
-            </Button>
+            </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="ml-[150px] space-y-2 flex items-start flex-col text-xl font-semibold">
             <DropdownMenuItem
