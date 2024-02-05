@@ -1,9 +1,15 @@
-import React from 'react'
+import { Sheet, SheetContent, SheetTrigger } from "@/src/components/ui/sheet";
+import SideLinks from "./SideLinks";
 
 const MobileSideMenu = () => {
   return (
-    <div>MobileSideMenu</div>
-  )
-}
+    <Sheet>
+      <SheetTrigger>Open</SheetTrigger>
+      <SheetContent>
+        <SideLinks />
+      </SheetContent>
+    </Sheet>
+  );
+};
 
-export default MobileSideMenu
+export default MobileSideMenu;

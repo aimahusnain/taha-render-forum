@@ -88,14 +88,6 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
             <CommandGroup heading='Communities & Posts'>
               {queryResults?.map((result) => (
                 <CommandItem
-                  onSelect={(e) => {
-                    if ('name' in result) {
-                      router.push(`/r/${e}`);
-                    } else if ('title' in result) {
-                      router.push(`/post/${result.id}`);
-                    }
-                    router.refresh();
-                  }}
                   key={result.id}
                   value={'name' in result ? result.name : result.title}
                 >
@@ -107,7 +99,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
                   {'name' in result ? (
                     <Link href={`/r/${result.name}`}>r/{result.name}</Link>
                   ) : (
-<Link href={`/r/${result.subreddit.name}/post/${result.id}`}>{result.title}</Link>
+<Link href={`/r/${result.subreddit.name}/post/${result.id}`}>p/{result.title}</Link>
                   )}
                 </CommandItem>
               ))}
