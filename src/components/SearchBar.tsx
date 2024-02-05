@@ -102,13 +102,12 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
                   {'name' in result ? (
                     <Users className='mr-2 h-4 w-4' />
                   ) : (
-                    // Placeholder for the post icon
                     <span className='mr-2 h-4 w-4'>📝</span>
                   )}
                   {'name' in result ? (
                     <Link href={`/r/${result.name}`}>r/{result.name}</Link>
                   ) : (
-                    <Link href={`/post/${result.id}`}>{result.title}</Link>
+<Link href={`/r/${result.subreddit.name}/post/${result.id}`}>{result.title}</Link>
                   )}
                 </CommandItem>
               ))}

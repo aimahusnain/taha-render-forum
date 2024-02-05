@@ -1,5 +1,5 @@
-import { db } from '@/src/lib/db';
-import { Subreddit, Post } from '@prisma/client';
+import { db } from "@/src/lib/db";
+import { Subreddit, Post } from "@prisma/client";
 
 export async function GET(req: Request) {
   const url = new URL(req.url);
@@ -11,6 +11,7 @@ export async function GET(req: Request) {
     where: {
       name: {
         startsWith: q,
+        mode: "insensitive",
       },
     },
     include: {
@@ -23,15 +24,15 @@ export async function GET(req: Request) {
     where: {
       title: {
         contains: q,
+        mode: "insensitive",
       },
     },
     include: {
-      // include any other related data you need
       author: true,
       subreddit: true,
       comments: true,
     },
-    take: 5, // adjust as needed
+    take: 5,
   });
 
   const results = [...subredditResults, ...postResults];
