@@ -72,10 +72,10 @@ const SearchPage = ({ parmy }: { parmy: any }) => {
             placeholder="Search articles…"
             value={searchTerm}
             onChange={handleSearchInputChange}
-            className="w-full rounded-full border focus:!border-primary px-4 py-2 text-base focus:bg-transparent border-neutral-800 bg-neutral-800 text-neutral-50 transition-all placeholder:text-neutral-400 hover:bg-neutral-950"
+            className="w-full rounded-full border focus:!border-primary text-black border-slate-200 px-4 py-2 text-base focus:bg-transparent transition-all"
           />
         </div>
-        <div className="col-span-1 flex flex-row flex-wrap gap-1 text-neutral-300 md:flex-nowrap justify-end">
+        <div className="col-span-1 flex flex-row flex-wrap gap-1 text-slate-800 md:flex-nowrap justify-end">
           <SocialMediaIcons gap="gap-10" />
         </div>
       </div>
