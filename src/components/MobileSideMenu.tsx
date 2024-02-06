@@ -6,7 +6,7 @@ const MobileSideMenu = () => {
   return (
     <div className="sm:hidden visible">
       <Sheet>
-        <SheetTrigger className="mx-4 hover:bg-slate-300 rounded-full">
+        <SheetTrigger className="mx-2 p-3 hover:bg-slate-300 rounded-full">
           <HiMiniBars3CenterLeft />
         </SheetTrigger>
         <SheetContent side="left">
