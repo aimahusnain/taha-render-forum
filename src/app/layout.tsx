@@ -32,7 +32,7 @@ export default function RootLayout({
           {/* @ts-expect-error Server Component */}
           <Navbar />
           {authModal}
-
+{/* Add all the things in the Navbar */}
           <div className='max-w-7xl h-full'>
             {children}
           </div>
