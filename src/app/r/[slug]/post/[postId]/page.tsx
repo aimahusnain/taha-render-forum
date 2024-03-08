@@ -1,6 +1,5 @@
 import CommentsSection from '@/src/components/CommentsSection'
 import EditorOutput from '@/src/components/EditorOutput'
-import PostVoteServer from '@/src/components/post-vote/PostVoteServer'
 import { buttonVariants } from '@/src/components/ui/Button'
 import { db } from '@/src/lib/db'
 import { redis } from '@/src/lib/redis'
@@ -25,9 +24,8 @@ const SubRedditPostPage = async ({ params }: SubRedditPostPageProps) => {
     `post:${params.postId}`
   )) as CachedPost
 
-  let post: (Post & { votes: Vote[]; author: User }) | null = null
+  let post: (Post & { author: User }) | null = null
 
-  if (!cachedPost) {
     post = await db.post.findFirst({
       where: {
         id: params.postId,
@@ -37,17 +35,15 @@ const SubRedditPostPage = async ({ params }: SubRedditPostPageProps) => {
         author: true,
       },
     })
-  }
 
-  if (!post && !cachedPost) return notFound()
+  if (!post) return notFound()
 
   return (
     <div>
       <div className='h-full flex flex-col sm:flex-row items-center sm:items-start justify-between'>
-        <Suspense fallback={<PostVoteShell />}>
-          {/* @ts-expect-error server component */}
+        {/* <Suspense fallback={<PostVoteShell />}>
           <PostVoteServer
-            postId={post?.id ?? cachedPost.id}
+            postId={post?.id}
             getData={async () => {
               return await db.post.findUnique({
                 where: {
@@ -59,7 +55,7 @@ const SubRedditPostPage = async ({ params }: SubRedditPostPageProps) => {
               })
             }}
           />
-        </Suspense>
+        </Suspense> */}
 
         <div className='sm:w-0 w-full flex-1 bg-white p-4 rounded-sm'>
           <p className='max-h-40 mt-1 truncate text-xs text-gray-500'>
@@ -84,25 +80,4 @@ const SubRedditPostPage = async ({ params }: SubRedditPostPageProps) => {
   )
 }
 
-function PostVoteShell() {
-  return (
-    <div className='flex items-center flex-col pr-6 w-20'>
-      {/* upvote */}
-      <div className={buttonVariants({ variant: 'ghost' })}>
-        <ArrowBigUp className='h-5 w-5 text-zinc-700' />
-      </div>
-
-      {/* score */}
-      <div className='text-center py-2 font-medium text-sm text-zinc-900'>
-        <Loader2 className='h-3 w-3 animate-spin' />
-      </div>
-
-      {/* downvote */}
-      <div className={buttonVariants({ variant: 'ghost' })}>
-        <ArrowBigDown className='h-5 w-5 text-zinc-700' />
-      </div>
-    </div>
-  )
-}
-
-export default SubRedditPostPage
+export default SubRedditPostPage;

@@ -1,9 +1,9 @@
 'use client'
 
 import CustomCodeRenderer from '@/src/components/renderers/CustomCodeRenderer'
-import CustomImageRenderer from '@/src/components/renderers/CustomImageRenderer'
 import { FC } from 'react'
 import dynamic from 'next/dynamic'
+import CustomHeaderRenderer from './renderers/CustomHeaderRenderer'
 
 const Output = dynamic(
   async () => (await import('editorjs-react-renderer')).default,
@@ -15,8 +15,8 @@ interface EditorOutputProps {
 }
 
 const renderers = {
-  image: CustomImageRenderer,
   code: CustomCodeRenderer,
+  header: CustomHeaderRenderer,
 }
 
 const style = {
@@ -33,7 +33,7 @@ const EditorOutput: FC<EditorOutputProps> = ({ content }) => {
       className='text-sm'
       renderers={renderers}
       data={content}
-    />
+      />
   )
 }
 export default EditorOutput
